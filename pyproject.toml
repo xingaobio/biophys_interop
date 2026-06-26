@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biophys_interop"
+version = "0.1.0"
+description = "Calibrated, model-agnostic representation + QC layer for heterogeneous biophysical experimental data"
+readme = "src/biophys_interop/README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [{ name = "Xin Gao" }]
+keywords = ["biophysics", "data-interoperability", "quality-control", "protein-ml", "SPR", "ITC", "SAXS"]
+dependencies = ["numpy>=1.23"]
+
+[project.scripts]
+biophys-interop = "biophys_interop.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,23 @@
+{
+  "record_id": "ex-dls-1",
+  "modality": "DLS",
+  "entity_id": "P-XYZ",
+  "entity_kind": "protein",
+  "entity_sequence": "MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQ",
+  "assay_type": "dynamic light scattering",
+  "doi": "10.0000/example.dls.1",
+  "source_db": "example",
+  "license": "CC0",
+  "derivation": "measured",
+  "n_replicates": 3,
+  "uncertainty": {"value": 0.5, "type": "std", "source": "reported"},
+  "temperature_C": 25,
+  "pH": 7.4,
+  "buffer": "PBS",
+  "measurement": {
+    "Rh": 12.0,
+    "PDI": 0.35,
+    "MW": 50000,
+    "mw_sequence": 50000
+  }
+}

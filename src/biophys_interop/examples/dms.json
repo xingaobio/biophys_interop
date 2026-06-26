@@ -1,0 +1,24 @@
+{
+  "record_id": "ex-dms-1",
+  "modality": "DMS",
+  "entity_id": "AB-RBD",
+  "entity_kind": "mutant",
+  "entity_sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFTVS",
+  "assay_type": "deep mutational scanning (binding, FACS-seq)",
+  "doi": "10.0000/example.dms.1",
+  "source_db": "example",
+  "license": "CC0",
+  "derivation": "simulated",
+  "n_replicates": 2,
+  "uncertainty": {"value": 0.15, "type": "std", "source": "reported"},
+  "temperature_C": 25,
+  "pH": 7.4,
+  "buffer": "PBS",
+  "measurement": {
+    "mutation": "A:T28Y",
+    "fitness": -0.8,
+    "read_count": 12,
+    "stop_codon_control": true,
+    "wt_normalization": true
+  }
+}

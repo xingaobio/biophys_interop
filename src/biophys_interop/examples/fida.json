@@ -1,0 +1,21 @@
+{
+  "record_id": "ex-fida-1",
+  "modality": "FIDA",
+  "entity_id": "AB-2",
+  "entity_kind": "antibody",
+  "entity_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFTGYY",
+  "assay_type": "Flow-Induced Dispersion Analysis (label-free, in-solution; Taylor dispersion)",
+  "doi": "10.0000/example.fida.1",
+  "source_db": "example",
+  "license": "CC0",
+  "derivation": "measured",
+  "n_replicates": 3,
+  "uncertainty": {"value": 2.0e-9, "type": "std", "source": "reported"},
+  "temperature_C": 25,
+  "pH": 7.4,
+  "buffer": "PBS",
+  "measurement": {
+    "Rh": 5.2,
+    "KD": {"value": 20, "unit": "nM"}
+  }
+}

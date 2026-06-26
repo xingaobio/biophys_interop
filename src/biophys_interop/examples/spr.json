@@ -1,0 +1,25 @@
+{
+  "record_id": "ex-spr-1",
+  "modality": "SPR",
+  "entity_id": "AB-001",
+  "entity_kind": "antibody",
+  "entity_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFT",
+  "assay_type": "SPR single-cycle kinetics",
+  "doi": "10.0000/example.spr.1",
+  "source_db": "example",
+  "license": "CC0",
+  "derivation": "measured",
+  "n_replicates": 3,
+  "uncertainty": {"value": 3.0e-10, "type": "std", "source": "reported"},
+  "temperature_C": 25,
+  "pH": 7.4,
+  "buffer": "HBS-EP+",
+  "measurement": {
+    "KD": {"value": 2.0, "unit": "nM"},
+    "kon": 2.0e6,
+    "koff": 4.0e-3,
+    "Rmax": 80,
+    "trace_conc": {"value": 5.0, "unit": "nM"},
+    "incubation_time": {"value": 2, "unit": "min"}
+  }
+}

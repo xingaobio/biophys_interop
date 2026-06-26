@@ -1,0 +1,25 @@
+{
+  "record_id": "ex-saxs-1",
+  "modality": "SAXS",
+  "entity_id": "P-KRAS",
+  "entity_kind": "protein",
+  "entity_sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEY",
+  "assay_type": "SEC-SAXS",
+  "doi": "10.0000/example.saxs.1",
+  "source_db": "SASBDB",
+  "license": "CC BY",
+  "derivation": "measured",
+  "n_replicates": 2,
+  "uncertainty": {"value": 0.8, "type": "std", "source": "reported"},
+  "temperature_C": 20,
+  "pH": 7.5,
+  "buffer": "20mM HEPES 150mM NaCl",
+  "measurement": {
+    "Rg": 24.5,
+    "Dmax": 78,
+    "I0": 120,
+    "rg_from_pr": 28.0,
+    "guinier_quality": 0.82,
+    "dilution_series": true
+  }
+}

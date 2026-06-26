@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.DS_Store
+build/
+dist/
+
+# kept local only (unpublished metrics) — not for the public repo
+CASE_STUDY.md
+CASE_STUDY.pdf
