@@ -173,8 +173,10 @@ Please cite the original databases when you use the validation data.
 
 ## Citation
 
-If you use `biophys_interop`, cite the software using [`CITATION.cff`](CITATION.cff). The preprint citation will be
-added after posting.
+If you use `biophys_interop`, cite the software using [`CITATION.cff`](CITATION.cff) and its version DOI:
+[10.5281/zenodo.21446585](https://doi.org/10.5281/zenodo.21446585). The reproducibility dataset and QC rule registry
+are archived separately at [10.5281/zenodo.21446602](https://doi.org/10.5281/zenodo.21446602). The preprint citation
+will be added after posting.
 
 ---
 
