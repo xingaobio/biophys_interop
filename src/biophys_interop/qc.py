@@ -1,7 +1,7 @@
 """qc(record) -> record + QC flags + calibrated uncertainty (INTEROP_SPEC §5).
 
 The program's MOAT: biophysics judgment distilled into deterministic, method-aware rules. Each rule is a
-registry entry with a literature/best-practice `basis` and an `action`. Adding a new domain rule = append one
+registry entry with a literature/best-practice `basis` and an `action`. Adding a new "Xin rule" = append one
 `@rule(...)` function. `RULES` currently holds 72 method-aware rules (RULE_COUNT) spanning the 24-modality
 schema: all-modality/generic (14), cross-modality (18), SAXS (6), ITC (5), DMS (5), NMR (4), XL-MS (4),
 MST (3), cryoEM (3), mass photometry (3), HDX-MS (2), and BLI / AUC / native MS / smFRET /

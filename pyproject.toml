@@ -1,20 +1,49 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "biophys_interop"
 version = "0.1.0"
-description = "Calibrated, model-agnostic representation + QC layer for heterogeneous biophysical experimental data"
-readme = "src/biophys_interop/README.md"
-requires-python = ">=3.10"
-license = "Apache-2.0"
-authors = [{ name = "Xin Gao" }]
-keywords = ["biophysics", "data-interoperability", "quality-control", "protein-ml", "SPR", "ITC", "SAXS"]
-dependencies = ["numpy>=1.23"]
+description = "Standardization and model-free quality-control layer for heterogeneous biophysical bioactivity data"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Xin Gao", email = "xingaouk@gmail.com" }]
+keywords = [
+    "bioactivity", "biophysics", "data-quality", "cheminformatics",
+    "ChEMBL", "BindingDB", "SPR", "ITC", "standardization",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+dependencies = ["numpy>=1.21"]
+
+[project.urls]
+Homepage = "https://github.com/xingaobio/biophys_interop"
+Repository = "https://github.com/xingaobio/biophys_interop"
 
 [project.scripts]
 biophys-interop = "biophys_interop.cli:main"
 
+[project.optional-dependencies]
+# Batch CSV/TSV -> canonical Parquet path (cli `batch`); core stays numpy-only.
+batch = ["pandas>=1.5", "pyarrow>=10"]
+test = ["pytest>=7"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["biophys_interop*"]
+
+[tool.setuptools.package-data]
+biophys_interop = ["examples/*.json", "README.md"]

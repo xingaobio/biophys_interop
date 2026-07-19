@@ -13,7 +13,7 @@ MODALITIES = ["SPR", "BLI", "ITC", "SAXS", "MST", "NMR", "XL-MS", "cryoEM", "DMS
               "mass_photometry", "GCI",
               # round-3 (first-principles taxonomy closure): remaining named binding/biophysics techniques
               "fluorescence_polarization", "native_MS", "HDX-MS", "smFRET", "DSC", "switchSENSE",
-              "other"]   # taxonomy-complete for named binding/biophysics techniques
+              "other"]   # taxonomy-complete for named techniques; see knowledge/landscape/modality_coverage_matrix.md
 ENTITY_KINDS = ["protein", "complex", "antibody", "peptide", "mutant"]
 UNC_TYPES = ["std", "sem", "ci95", "range"]
 UNC_SOURCES = ["reported", "estimated", "calibrated"]

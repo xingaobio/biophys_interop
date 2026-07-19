@@ -1,0 +1,803 @@
+{
+  "registry": "biophys_interop QC rule cards",
+  "package_version": "0.1.0",
+  "rule_count": 72,
+  "generated_at": "2026-07-02T10:35:52Z",
+  "tier_legend": {
+    "validated": "Empirically validated at scale against an independent curator's labels (ChEMBL data_validity_comment; Results \u00a71-2). Per-record: the value-range rule (R1 -> affinity_out_of_range). The duplicate rule (R5b) is also validated but is a dataset-level canonicalization step, not a per-record rule in this registry.",
+    "literature-grounded": "Cited to measurement best practice but not empirically validated here; no repository publishes per-record ground-truth flags for the readout."
+  },
+  "severity_counts": {
+    "fail": 7,
+    "warn": 65
+  },
+  "tier_counts": {
+    "validated": 1,
+    "literature-grounded": 71
+  },
+  "cards": [
+    {
+      "code": "titration_regime",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "fail",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "treat KD as lower-limit; re-measure with [R]<<KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "titration_regime_marginal",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "prefer quadratic fit / lower [R]",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "equilibration",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "fail",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "distrust KD; extend incubation",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "equilibration_marginal",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "extend incubation or report apparent KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "mass_transport_limited",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "wiley-cpz1-1030",
+      "action": "vary flow rate / compare Langmuir vs Langmuir-mass-transport; lower ligand density",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "kon_implausible",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "fail",
+      "basis": "wiley-appl-70055",
+      "action": "reject; kon above diffusion limit",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "koff_unmeasurably_slow",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "wiley-jmr-1159",
+      "action": "ultratight binding; KD a lower bound (SPR-unmeasurable; cf. DFS)",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "kd_kinetics_inconsistent",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "reconcile steady-state vs kinetic KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "non_1to1_kinetics",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "heterogeneous ligand/multiphasic; try heterogeneous-ligand or bivalent-analyte model",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "steady_state_no_equilibration_proof",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "show time-invariance",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "active_fraction_unknown",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "measure active fraction by titration",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "baseline_drift",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "re-reference / re-run (buffer mismatch, evaporation, temperature)",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "regeneration_loss",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "harsh regeneration denatures ligand -> fluctuating Rmax; down-weight late cycles",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "analyte_aggregation",
+      "modalities": [
+        "BLI",
+        "GCI",
+        "MST",
+        "SPR",
+        "switchSENSE"
+      ],
+      "severity": "fail",
+      "basis": "wiley-appl-70055",
+      "action": "reject; re-purify",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "bli_weak_binder_limit",
+      "modalities": [
+        "BLI"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "validate weak (KD>10uM) BLI affinities by SPR",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "mst_low_response_amplitude",
+      "modalities": [
+        "MST"
+      ],
+      "severity": "warn",
+      "basis": "wiley-cpz1-14",
+      "action": "low Fnorm response: S/N too low for a reliable KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "mst_fluorescence_control_missing",
+      "modalities": [
+        "MST"
+      ],
+      "severity": "warn",
+      "basis": "wiley-nph-19917",
+      "action": "run an SDS-Test/denaturation control to exclude ligand-induced fluorescence change",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "mst_labeling_heterogeneity",
+      "modalities": [
+        "MST"
+      ],
+      "severity": "warn",
+      "basis": "wiley-cpz1-14",
+      "action": "use site-specific labeling; heterogeneous/over-labeling biases KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "itc_low_enthalpy",
+      "modalities": [
+        "ITC"
+      ],
+      "severity": "warn",
+      "basis": "lit-upadhyay-2024-itc-spr",
+      "action": "confirm by orthogonal method",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "itc_stoichiometry_off",
+      "modalities": [
+        "ITC"
+      ],
+      "severity": "warn",
+      "basis": "lit-upadhyay-2024-itc-spr",
+      "action": "check purity / active fraction",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "itc_c_value_out_of_range",
+      "modalities": [
+        "ITC"
+      ],
+      "severity": "warn",
+      "basis": "lit-upadhyay-2024-itc-spr",
+      "action": "tune cell concentration to c in 5-500",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "itc_dG_KD_mismatch",
+      "modalities": [
+        "ITC"
+      ],
+      "severity": "warn",
+      "basis": "lit-upadhyay-2024-itc-spr",
+      "action": "reconcile dG(dH,dS) with KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "itc_heat_of_dilution_uncorrected",
+      "modalities": [
+        "ITC"
+      ],
+      "severity": "warn",
+      "basis": "lit-upadhyay-2024-itc-spr",
+      "action": "subtract heat of dilution",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "guinier_upward_curvature",
+      "modalities": [
+        "SAXS"
+      ],
+      "severity": "fail",
+      "basis": "lit-grant-2015-saxs",
+      "action": "reject; SEC-SAXS",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "radiation_damage",
+      "modalities": [
+        "SAXS"
+      ],
+      "severity": "warn",
+      "basis": "lit-hopkins-2016-saxs-raddamage",
+      "action": "use early frames",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "rg_inconsistent",
+      "modalities": [
+        "SAXS"
+      ],
+      "severity": "warn",
+      "basis": "lit-grant-2015-saxs",
+      "action": "inspect data range",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "saxs_conc_dependence_unchecked",
+      "modalities": [
+        "SAXS"
+      ],
+      "severity": "warn",
+      "basis": "lit-grant-2015-saxs",
+      "action": "run a dilution series",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "dmax_rg_ratio_anomaly",
+      "modalities": [
+        "SAXS"
+      ],
+      "severity": "warn",
+      "basis": "lit-grant-2015-saxs",
+      "action": "inspect P(r) / oligomeric state",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "saxs_mw_inconsistent",
+      "modalities": [
+        "SAXS"
+      ],
+      "severity": "warn",
+      "basis": "lit-grant-2015-saxs",
+      "action": "check oligomeric state / aggregation",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "nmr_referencing_unreported",
+      "modalities": [
+        "NMR"
+      ],
+      "severity": "warn",
+      "basis": "lit-laurents-2022-af2-nmr",
+      "action": "report DSS/TMS referencing",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "nmr_csp_saturation",
+      "modalities": [
+        "NMR"
+      ],
+      "severity": "warn",
+      "basis": "lit-laurents-2022-af2-nmr",
+      "action": "titrate to saturation / check fast-exchange",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "nmr_restraint_violation_high",
+      "modalities": [
+        "NMR"
+      ],
+      "severity": "fail",
+      "basis": "lit-laurents-2022-af2-nmr",
+      "action": "re-examine assignments",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "nmr_exchange_broadening",
+      "modalities": [
+        "NMR"
+      ],
+      "severity": "warn",
+      "basis": "lit-laurents-2022-af2-nmr",
+      "action": "vary temperature/field",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "xlms_fdr_high",
+      "modalities": [
+        "XL-MS"
+      ],
+      "severity": "warn",
+      "basis": "lit-stahl-2024-alphalink2-complexes",
+      "action": "tighten FDR <= 5%",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "xlms_crosslinker_long",
+      "modalities": [
+        "XL-MS"
+      ],
+      "severity": "warn",
+      "basis": "lit-bullock-2018-xlms-restraints",
+      "action": "account for Euclidean vs SASD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "xlms_monolink_only",
+      "modalities": [
+        "XL-MS"
+      ],
+      "severity": "warn",
+      "basis": "lit-bullock-2018-xlms-restraints",
+      "action": "low structural information",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "xlms_distance_violation",
+      "modalities": [
+        "XL-MS"
+      ],
+      "severity": "fail",
+      "basis": "lit-bullock-2018-xlms-restraints",
+      "action": "false crosslink or wrong conformation",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "cryoem_resolution_insufficient",
+      "modalities": [
+        "cryoEM"
+      ],
+      "severity": "warn",
+      "basis": "lit-lawson-2021-cryoem-validation",
+      "action": "do not claim atomic detail",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "cryoem_fsc_low",
+      "modalities": [
+        "cryoEM"
+      ],
+      "severity": "warn",
+      "basis": "lit-lawson-2021-cryoem-validation",
+      "action": "check map-model FSC",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "cryoem_local_resolution_variation",
+      "modalities": [
+        "cryoEM"
+      ],
+      "severity": "warn",
+      "basis": "lit-lawson-2021-cryoem-validation",
+      "action": "report local resolution",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "low_read_count",
+      "modalities": [
+        "DMS"
+      ],
+      "severity": "warn",
+      "basis": "lit-matuszewski-2016-dms-design",
+      "action": "require min read depth",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "dms_stop_codon_control_missing",
+      "modalities": [
+        "DMS"
+      ],
+      "severity": "warn",
+      "basis": "lit-matuszewski-2016-dms-design",
+      "action": "include stop-codon negative control",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "dms_wt_normalization_missing",
+      "modalities": [
+        "DMS"
+      ],
+      "severity": "warn",
+      "basis": "lit-matuszewski-2016-dms-design",
+      "action": "normalize to wild-type",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "dms_dynamic_range_censored",
+      "modalities": [
+        "DMS"
+      ],
+      "severity": "warn",
+      "basis": "lit-matuszewski-2016-dms-design",
+      "action": "treat as censored value",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "dms_epistasis_unaccounted",
+      "modalities": [
+        "DMS"
+      ],
+      "severity": "warn",
+      "basis": "lit-matuszewski-2016-dms-design",
+      "action": "model epistasis for multi-mutants",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "high_polydispersity",
+      "modalities": [
+        "DLS",
+        "SEC-MALS"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "polydisperse: aggregation/heterogeneity; SEC/filter",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "rh_mw_inconsistent",
+      "modalities": [
+        "AUC",
+        "DLS",
+        "FIDA",
+        "SEC-MALS"
+      ],
+      "severity": "warn",
+      "basis": "wiley-febs-16312",
+      "action": "Rh too large for MW: aggregation/elongation",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "secmals_mw_inconsistent",
+      "modalities": [
+        "AUC",
+        "SEC-MALS"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "measured MW != sequence MW: unexpected oligomeric state",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "auc_oligomeric_heterogeneity",
+      "modalities": [
+        "AUC"
+      ],
+      "severity": "warn",
+      "basis": "wiley-appl-70055",
+      "action": "multiple sedimenting species: heterogeneity/aggregation",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "low_thermal_stability",
+      "modalities": [
+        "CD",
+        "DSC",
+        "nDSF"
+      ],
+      "severity": "warn",
+      "basis": "wiley-pro-3622",
+      "action": "low Tm: marginal stability / developability risk",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "nms_response_factor_uncorrected",
+      "modalities": [
+        "native_MS"
+      ],
+      "severity": "warn",
+      "basis": "lit-bui-2024-slomo-nms",
+      "action": "gas-phase ion abundance != solution concentration; use SLOMO/response-factor correction before quoting KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "hdx_low_sequence_coverage",
+      "modalities": [
+        "HDX-MS"
+      ],
+      "severity": "warn",
+      "basis": "lit-oganesyan-2018-hdx-ms",
+      "action": "low peptide coverage: interface/epitope call unreliable; improve digestion/coverage",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "hdx_back_exchange_uncontrolled",
+      "modalities": [
+        "HDX-MS"
+      ],
+      "severity": "warn",
+      "basis": "lit-oganesyan-2018-hdx-ms",
+      "action": "report/limit back-exchange (maintain low T/pH; include fully-deuterated control)",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "smfret_dye_perturbation_unchecked",
+      "modalities": [
+        "smFRET"
+      ],
+      "severity": "warn",
+      "basis": "lit-agam-2022-smfret-blind",
+      "action": "check dye-position/photophysics perturbation (Agam 2022 interlab: distance accuracy ~5 A only if controlled)",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "fp_tracer_affinity_mismatch",
+      "modalities": [
+        "fluorescence_polarization"
+      ],
+      "severity": "warn",
+      "basis": "lit-prystay-2001-fp-kd",
+      "action": "FP tracer Kd should bracket the measured Kd; mismatch compresses dynamic range",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "mp_oligomeric_heterogeneity",
+      "modalities": [
+        "mass_photometry"
+      ],
+      "severity": "warn",
+      "basis": "lit-wu-2020-mass-photometry-affinity",
+      "action": "multiple mass species: oligomeric heterogeneity; report the full mass distribution, not one KD",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "mp_low_monomer_fraction",
+      "modalities": [
+        "mass_photometry"
+      ],
+      "severity": "warn",
+      "basis": "lit-foley-2021-mass-photometry-nmeth",
+      "action": "low monomer fraction: aggregation/oligomerization; purify or report species-resolved",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "mp_concentration_out_of_window",
+      "modalities": [
+        "mass_photometry"
+      ],
+      "severity": "warn",
+      "basis": "lit-wu-2020-mass-photometry-affinity",
+      "action": "MP works ~1-100 nM landing rate; outside this, counts are unreliable",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "simulated",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-geng-2016-dacum",
+      "action": "flag derivation=simulated; keep out of held-out test",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "temperature_unreported",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "report temperature (affinity is T-dependent)",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "ph_unreported",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "report pH",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "buffer_unreported",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "report buffer/ionic strength",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "affinity_out_of_range",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-jarmoskaite-2020-measure-affinity",
+      "action": "verify units / measurement",
+      "tier": "validated"
+    },
+    {
+      "code": "uncertainty_unreported",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-patrone-2024-uq-antibody",
+      "action": "report measurement uncertainty",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "single_replicate",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-arsiwala-2025-prophet-ab",
+      "action": "replicate for an error estimate",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "replicate_unreported",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-arsiwala-2025-prophet-ab",
+      "action": "report number of replicates",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "entity_sequence_missing",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "interop-spec",
+      "action": "attach sequence to link structure/features",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "provenance_incomplete",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "interop-spec",
+      "action": "record source_db + DOI for traceability",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "method_assay_mismatch",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-geng-2016-dacum",
+      "action": "record the specific assay_type",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "batch_effect_uncontrolled",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-geng-2016-dacum",
+      "action": "include plate/batch controls",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "cross_assay_pooling_noise",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "lit-landrum-2024-combining-ic50-noise",
+      "action": "do not pool IC50/Ki across assays without maximal metadata-matched curation; flag pooled-source records",
+      "tier": "literature-grounded"
+    },
+    {
+      "code": "replicate_disagreement",
+      "modalities": [
+        "*"
+      ],
+      "severity": "warn",
+      "basis": "chembl-data-validity",
+      "action": "exclude the outlier measurement before pooling/calibration",
+      "tier": "literature-grounded"
+    }
+  ]
+}

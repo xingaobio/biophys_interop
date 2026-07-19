@@ -1,10 +1,21 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.egg-info/
-.DS_Store
 build/
 dist/
-
-# kept local only (unpublished metrics) — not for the public repo
-CASE_STUDY.md
-CASE_STUDY.pdf
+.eggs/
+# Environments
+.venv/
+venv/
+env/
+# Batch outputs / scratch
+out/
+*.parquet
+!examples/*.parquet
+# OS / editor
+.DS_Store
+._*
+.ipynb_checkpoints/
+.vscode/
+.idea/

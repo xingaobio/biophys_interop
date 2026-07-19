@@ -1,0 +1,28 @@
+{
+  "title": "biophys_interop: an open standardization and model-free QC layer for biophysical bioactivity data",
+  "description": "biophys_interop is a dependency-light Python toolkit for standardizing heterogeneous biophysical bioactivity measurements and applying transparent, method-aware quality-control rules. This software release contains the canonical schema, 72-rule QC registry, command-line interface, examples, and a runnable quickstart notebook. The full reproducibility dataset is archived separately because its ChEMBL-derived records are licensed CC BY-SA 3.0.",
+  "creators": [
+    {
+      "name": "Gao, Xin",
+      "orcid": "0000-0003-0877-0643",
+      "affiliation": "Independent researcher, England, United Kingdom"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "bioactivity",
+    "biophysics",
+    "quality control",
+    "data standardization",
+    "ChEMBL",
+    "BindingDB",
+    "cheminformatics"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/xingaobio/biophys_interop",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}
