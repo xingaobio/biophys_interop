@@ -5,6 +5,7 @@ recursive-include src/biophys_interop *.py *.json *.md
 recursive-include notebooks *.ipynb *.md
 recursive-include examples *.csv
 recursive-include docs *.json *.md
+recursive-include assets *.png
 global-exclude .DS_Store
 global-exclude ._*
 global-exclude __pycache__

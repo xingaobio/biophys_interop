@@ -7,6 +7,17 @@ An open standardization and *model-free* quality-control (QC) layer for heteroge
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/xingaobio/biophys_interop/blob/master/notebooks/biophys_interop_quickstart.ipynb)
 
+![Conceptual flow from heterogeneous biophysical measurements through standardization and transparent quality control to auditable canonical records](assets/biophys-interop-flow-light.png)
+
+> **From measurements to reusable records.** The left side represents heterogeneous experimental evidence, including
+> SPR sensorgrams, ITC thermograms, and binding dose-response curves. The central prism represents conversion into a
+> shared schema followed by transparent, method-aware QC. The right side represents canonical records that retain QC
+> outcomes and provenance, ready for reproducible downstream analysis.
+
+- **Standardize:** convert reported values, units, metadata, and assay context into one canonical representation.
+- **Quality control:** apply explicit, cited rules that return pass/warn/fail outcomes with reasons.
+- **Preserve provenance:** retain record identifiers, QC evidence, and source information so each output is auditable.
+
 ---
 
 ## What this is
