@@ -121,9 +121,10 @@ The 72 rules are documented in [`docs/rule_cards.md`](docs/rule_cards.md) (human
 basis, and the action it triggers. **Read this before relying on any single rule** — the rules fall into two tiers of
 evidence, and the distinction matters:
 
-- **Validated (2 general affinity rules).** The value-range rule (R1) and the exact-value duplicate rule (R5b) were
-  validated at scale against an independent curator's flags (see Results). These are the rules the paper's headline
-  numbers are about.
+- **Benchmark operations (not general validation).** Two affinity-data operations were compared with ChEMBL annotation
+  proxies in the manuscript benchmarks. The R1 analysis is a post-hoc restricted range analysis; R5b is a
+  source-order-dependent exact-value duplicate operation and is **not** one of the public 72 registry rules. Neither
+  comparison validates an equivalent public rule against independently source-verified error labels.
 - **Literature-grounded registry (~70 method-specific rules).** The remaining rules — thermodynamic consistency for
   ITC, titration-regime checks for SPR/BLI/MST, Guinier-quality checks for SAXS, and so on — are grounded in the
   measurement literature but are **not** claimed as empirically validated here, because no public repository publishes
@@ -132,21 +133,27 @@ evidence, and the distinction matters:
 
 ---
 
-## What the validation showed
+## What the benchmark comparisons showed
 
-On 175,387 real ChEMBL affinity records across 30 targets (7.3% carry a curator flag):
+The manuscript benchmarks use ChEMBL annotations as **proxies**, not independently verified source errors. On 175,387
+real ChEMBL affinity records across 30 targets, the historical leave-one-target-out comparisons gave MCC 0.612 for the
+R1 range analysis and 0.648 for R5b. Simple semantic baselines performed equally well or better, so these results do
+not establish algorithmic superiority.
 
-- **Model-free QC reproduces an independent curator's flags.** Leave-one-target-out, the value-range rule reaches
-  MCC 0.612 (95% CI [0.596, 0.628]) against ChEMBL's validity comments, and the duplicate rule MCC 0.648
-  ([0.641, 0.656]) — with no trained model.
-- **The thresholds transfer to unseen targets.** Fit on 15 targets and evaluated on 15 disjoint targets
-  (88,443 held-out records), the rules give MCC 0.727 (validity) and 0.643 (duplicate).
-- **The layer finds errors the curator missed.** It surfaces 929 internal inconsistencies ChEMBL did not flag, and a
-  cross-database check against BindingDB exposes 38 measurements disagreeing by ≥100×, of which 34 (89%) carry no
-  ChEMBL flag. A domain expert confirmed 16 of a 24-record sample as genuine errors.
+A prospectively frozen 12-target evaluation (50,664 records; no historical target-ID overlap) gave MCC 0.778 for R1
+and 0.670 for R5b. The documented fixed-range proxy (0.901) and relation-preserving duplicate baseline (0.673) again
+performed as well or better. The fresh-target split still has molecule overlap with the historical cache, and its labels
+remain ChEMBL annotations.
 
-The full method, figures, and analysis will be linked here once the preprint is posted. Numbers here are reproduced
-verbatim from the manuscript's verified result files.
+The cross-repository comparison identifies review candidates, rather than automatically verified errors: among 1,714
+shared ChEMBL–BindingDB keys, 38 differed by at least 100-fold and 34 lacked a ChEMBL validity flag. Primary-paper
+evidence is currently available for six enriched historical cases (five database unit/value problems and one
+construct-collapse interoperability flag); the remaining cases are unresolved at source level.
+
+The v1 preprint is available at
+[ChemRxiv DOI 10.26434/chemrxiv.15006416/v1](https://doi.org/10.26434/chemrxiv.15006416/v1). A revised manuscript and
+its restricted public companion are in preparation. Numbers above are traceable to the version-controlled analysis
+records, and the stated limitations are part of the result.
 
 ---
 
@@ -193,6 +200,7 @@ will be added after posting.
 
 ## Status and scope
 
-This is a v0.1.0 research release. The standardization and the two validated affinity rules are the mature core; the
-method-specific biophysical rules are a literature-grounded registry awaiting a curated, flag-annotated biophysical
-benchmark for direct evaluation. Issues and pull requests are welcome.
+This is a v0.1.0 research release. The standardization layer is the mature core. The 72 rules are a transparent,
+literature-grounded registry; the benchmark comparisons described above do not make the registry a collection of
+empirically validated detectors. A curated, flag-annotated biophysical benchmark is still needed for direct rule-level
+evaluation. Issues and pull requests are welcome.
