@@ -1,0 +1,73 @@
+code,modalities,severity,basis,action,tier
+titration_regime,BLI|GCI|MST|SPR|switchSENSE,fail,lit-jarmoskaite-2020-measure-affinity,treat KD as lower-limit; re-measure with [R]<<KD,literature-grounded
+titration_regime_marginal,BLI|GCI|MST|SPR|switchSENSE,warn,lit-jarmoskaite-2020-measure-affinity,prefer quadratic fit / lower [R],literature-grounded
+equilibration,BLI|GCI|MST|SPR|switchSENSE,fail,lit-jarmoskaite-2020-measure-affinity,distrust KD; extend incubation,literature-grounded
+equilibration_marginal,BLI|GCI|MST|SPR|switchSENSE,warn,lit-jarmoskaite-2020-measure-affinity,extend incubation or report apparent KD,literature-grounded
+mass_transport_limited,BLI|GCI|MST|SPR|switchSENSE,warn,wiley-cpz1-1030,vary flow rate / compare Langmuir vs Langmuir-mass-transport; lower ligand density,literature-grounded
+kon_implausible,BLI|GCI|MST|SPR|switchSENSE,fail,wiley-appl-70055,reject; kon above diffusion limit,literature-grounded
+koff_unmeasurably_slow,BLI|GCI|MST|SPR|switchSENSE,warn,wiley-jmr-1159,ultratight binding; KD a lower bound (SPR-unmeasurable; cf. DFS),literature-grounded
+kd_kinetics_inconsistent,BLI|GCI|MST|SPR|switchSENSE,warn,wiley-appl-70055,reconcile steady-state vs kinetic KD,literature-grounded
+non_1to1_kinetics,BLI|GCI|MST|SPR|switchSENSE,warn,wiley-appl-70055,heterogeneous ligand/multiphasic; try heterogeneous-ligand or bivalent-analyte model,literature-grounded
+steady_state_no_equilibration_proof,BLI|GCI|MST|SPR|switchSENSE,warn,lit-jarmoskaite-2020-measure-affinity,show time-invariance,literature-grounded
+active_fraction_unknown,BLI|GCI|MST|SPR|switchSENSE,warn,lit-jarmoskaite-2020-measure-affinity,measure active fraction by titration,literature-grounded
+baseline_drift,BLI|GCI|MST|SPR|switchSENSE,warn,wiley-appl-70055,"re-reference / re-run (buffer mismatch, evaporation, temperature)",literature-grounded
+regeneration_loss,BLI|GCI|MST|SPR|switchSENSE,warn,wiley-appl-70055,harsh regeneration denatures ligand -> fluctuating Rmax; down-weight late cycles,literature-grounded
+analyte_aggregation,BLI|GCI|MST|SPR|switchSENSE,fail,wiley-appl-70055,reject; re-purify,literature-grounded
+bli_weak_binder_limit,BLI,warn,wiley-appl-70055,validate weak (KD>10uM) BLI affinities by SPR,literature-grounded
+mst_low_response_amplitude,MST,warn,wiley-cpz1-14,low Fnorm response: S/N too low for a reliable KD,literature-grounded
+mst_fluorescence_control_missing,MST,warn,wiley-nph-19917,run an SDS-Test/denaturation control to exclude ligand-induced fluorescence change,literature-grounded
+mst_labeling_heterogeneity,MST,warn,wiley-cpz1-14,use site-specific labeling; heterogeneous/over-labeling biases KD,literature-grounded
+itc_low_enthalpy,ITC,warn,lit-upadhyay-2024-itc-spr,confirm by orthogonal method,literature-grounded
+itc_stoichiometry_off,ITC,warn,lit-upadhyay-2024-itc-spr,check purity / active fraction,literature-grounded
+itc_c_value_out_of_range,ITC,warn,lit-upadhyay-2024-itc-spr,tune cell concentration to c in 5-500,literature-grounded
+itc_dG_KD_mismatch,ITC,warn,lit-upadhyay-2024-itc-spr,"reconcile dG(dH,dS) with KD",literature-grounded
+itc_heat_of_dilution_uncorrected,ITC,warn,lit-upadhyay-2024-itc-spr,subtract heat of dilution,literature-grounded
+guinier_upward_curvature,SAXS,fail,lit-grant-2015-saxs,reject; SEC-SAXS,literature-grounded
+radiation_damage,SAXS,warn,lit-hopkins-2016-saxs-raddamage,use early frames,literature-grounded
+rg_inconsistent,SAXS,warn,lit-grant-2015-saxs,inspect data range,literature-grounded
+saxs_conc_dependence_unchecked,SAXS,warn,lit-grant-2015-saxs,run a dilution series,literature-grounded
+dmax_rg_ratio_anomaly,SAXS,warn,lit-grant-2015-saxs,inspect P(r) / oligomeric state,literature-grounded
+saxs_mw_inconsistent,SAXS,warn,lit-grant-2015-saxs,check oligomeric state / aggregation,literature-grounded
+nmr_referencing_unreported,NMR,warn,lit-laurents-2022-af2-nmr,report DSS/TMS referencing,literature-grounded
+nmr_csp_saturation,NMR,warn,lit-laurents-2022-af2-nmr,titrate to saturation / check fast-exchange,literature-grounded
+nmr_restraint_violation_high,NMR,fail,lit-laurents-2022-af2-nmr,re-examine assignments,literature-grounded
+nmr_exchange_broadening,NMR,warn,lit-laurents-2022-af2-nmr,vary temperature/field,literature-grounded
+xlms_fdr_high,XL-MS,warn,lit-stahl-2024-alphalink2-complexes,tighten FDR <= 5%,literature-grounded
+xlms_crosslinker_long,XL-MS,warn,lit-bullock-2018-xlms-restraints,account for Euclidean vs SASD,literature-grounded
+xlms_monolink_only,XL-MS,warn,lit-bullock-2018-xlms-restraints,low structural information,literature-grounded
+xlms_distance_violation,XL-MS,fail,lit-bullock-2018-xlms-restraints,false crosslink or wrong conformation,literature-grounded
+cryoem_resolution_insufficient,cryoEM,warn,lit-lawson-2021-cryoem-validation,do not claim atomic detail,literature-grounded
+cryoem_fsc_low,cryoEM,warn,lit-lawson-2021-cryoem-validation,check map-model FSC,literature-grounded
+cryoem_local_resolution_variation,cryoEM,warn,lit-lawson-2021-cryoem-validation,report local resolution,literature-grounded
+low_read_count,DMS,warn,lit-matuszewski-2016-dms-design,require min read depth,literature-grounded
+dms_stop_codon_control_missing,DMS,warn,lit-matuszewski-2016-dms-design,include stop-codon negative control,literature-grounded
+dms_wt_normalization_missing,DMS,warn,lit-matuszewski-2016-dms-design,normalize to wild-type,literature-grounded
+dms_dynamic_range_censored,DMS,warn,lit-matuszewski-2016-dms-design,treat as censored value,literature-grounded
+dms_epistasis_unaccounted,DMS,warn,lit-matuszewski-2016-dms-design,model epistasis for multi-mutants,literature-grounded
+high_polydispersity,DLS|SEC-MALS,warn,wiley-appl-70055,polydisperse: aggregation/heterogeneity; SEC/filter,literature-grounded
+rh_mw_inconsistent,AUC|DLS|FIDA|SEC-MALS,warn,wiley-febs-16312,Rh too large for MW: aggregation/elongation,literature-grounded
+secmals_mw_inconsistent,AUC|SEC-MALS,warn,wiley-appl-70055,measured MW != sequence MW: unexpected oligomeric state,literature-grounded
+auc_oligomeric_heterogeneity,AUC,warn,wiley-appl-70055,multiple sedimenting species: heterogeneity/aggregation,literature-grounded
+low_thermal_stability,CD|DSC|nDSF,warn,wiley-pro-3622,low Tm: marginal stability / developability risk,literature-grounded
+nms_response_factor_uncorrected,native_MS,warn,lit-bui-2024-slomo-nms,gas-phase ion abundance != solution concentration; use SLOMO/response-factor correction before quoting KD,literature-grounded
+hdx_low_sequence_coverage,HDX-MS,warn,lit-oganesyan-2018-hdx-ms,low peptide coverage: interface/epitope call unreliable; improve digestion/coverage,literature-grounded
+hdx_back_exchange_uncontrolled,HDX-MS,warn,lit-oganesyan-2018-hdx-ms,report/limit back-exchange (maintain low T/pH; include fully-deuterated control),literature-grounded
+smfret_dye_perturbation_unchecked,smFRET,warn,lit-agam-2022-smfret-blind,check dye-position/photophysics perturbation (Agam 2022 interlab: distance accuracy ~5 A only if controlled),literature-grounded
+fp_tracer_affinity_mismatch,fluorescence_polarization,warn,lit-prystay-2001-fp-kd,FP tracer Kd should bracket the measured Kd; mismatch compresses dynamic range,literature-grounded
+mp_oligomeric_heterogeneity,mass_photometry,warn,lit-wu-2020-mass-photometry-affinity,"multiple mass species: oligomeric heterogeneity; report the full mass distribution, not one KD",literature-grounded
+mp_low_monomer_fraction,mass_photometry,warn,lit-foley-2021-mass-photometry-nmeth,low monomer fraction: aggregation/oligomerization; purify or report species-resolved,literature-grounded
+mp_concentration_out_of_window,mass_photometry,warn,lit-wu-2020-mass-photometry-affinity,"MP works ~1-100 nM landing rate; outside this, counts are unreliable",literature-grounded
+simulated,*,warn,lit-geng-2016-dacum,flag derivation=simulated; keep out of held-out test,literature-grounded
+temperature_unreported,*,warn,lit-jarmoskaite-2020-measure-affinity,report temperature (affinity is T-dependent),literature-grounded
+ph_unreported,*,warn,lit-jarmoskaite-2020-measure-affinity,report pH,literature-grounded
+buffer_unreported,*,warn,lit-jarmoskaite-2020-measure-affinity,report buffer/ionic strength,literature-grounded
+affinity_out_of_range,*,warn,lit-jarmoskaite-2020-measure-affinity,verify units / measurement,literature-grounded
+uncertainty_unreported,*,warn,lit-patrone-2024-uq-antibody,report measurement uncertainty,literature-grounded
+single_replicate,*,warn,lit-arsiwala-2025-prophet-ab,replicate for an error estimate,literature-grounded
+replicate_unreported,*,warn,lit-arsiwala-2025-prophet-ab,report number of replicates,literature-grounded
+entity_sequence_missing,*,warn,interop-spec,attach sequence to link structure/features,literature-grounded
+provenance_incomplete,*,warn,interop-spec,record source_db + DOI for traceability,literature-grounded
+method_assay_mismatch,*,warn,lit-geng-2016-dacum,record the specific assay_type,literature-grounded
+batch_effect_uncontrolled,*,warn,lit-geng-2016-dacum,include plate/batch controls,literature-grounded
+cross_assay_pooling_noise,*,warn,lit-landrum-2024-combining-ic50-noise,do not pool IC50/Ki across assays without maximal metadata-matched curation; flag pooled-source records,literature-grounded
+replicate_disagreement,*,warn,chembl-data-validity,exclude the outlier measurement before pooling/calibration,literature-grounded

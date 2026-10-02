@@ -4,16 +4,14 @@
   "rule_count": 72,
   "generated_at": "2026-07-02T10:35:52Z",
   "tier_legend": {
-    "validated": "Empirically validated at scale against an independent curator's labels (ChEMBL data_validity_comment; Results \u00a71-2). Per-record: the value-range rule (R1 -> affinity_out_of_range). The duplicate rule (R5b) is also validated but is a dataset-level canonicalization step, not a per-record rule in this registry.",
-    "literature-grounded": "Cited to measurement best practice but not empirically validated here; no repository publishes per-record ground-truth flags for the readout."
+    "literature-grounded": "Executable rules grounded in measurement literature or curation conventions. Rule-level accuracy against independently source-verified errors is not established by the manuscript ChEMBL annotation-proxy benchmarks."
   },
   "severity_counts": {
     "fail": 7,
     "warn": 65
   },
   "tier_counts": {
-    "validated": 1,
-    "literature-grounded": 71
+    "literature-grounded": 72
   },
   "cards": [
     {
@@ -707,7 +705,7 @@
       "severity": "warn",
       "basis": "lit-jarmoskaite-2020-measure-affinity",
       "action": "verify units / measurement",
-      "tier": "validated"
+      "tier": "literature-grounded"
     },
     {
       "code": "uncertainty_unreported",
@@ -799,5 +797,7 @@
       "action": "exclude the outlier measurement before pooling/calibration",
       "tier": "literature-grounded"
     }
-  ]
+  ],
+  "evidence_scope_reviewed_at": "2026-10-02",
+  "benchmark_scope": "R1 is a post-hoc restricted range analysis; its implementation and evaluation scope do not directly validate affinity_out_of_range. R5b is a source-order-dependent dataset operation outside this per-record registry."
 }

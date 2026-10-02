@@ -2,11 +2,15 @@
 
 *Registry export — 72 deterministic, method-aware rules (package v0.1.0, generated 2026-07-02T10:35:52Z).*
 
-## Scope of validation
+## Evidence scope
 
-- **validated** (1 per-record rule): Empirically validated at scale against an independent curator's labels (ChEMBL data_validity_comment; Results §1-2). Per-record: the value-range rule (R1 -> affinity_out_of_range). The duplicate rule (R5b) is also validated but is a dataset-level canonicalization step, not a per-record rule in this registry.
+All **72 rules** are literature-grounded executable checks, including rules based on database-curation conventions.
+The manuscript's ChEMBL annotation-proxy comparisons do not establish rule-level accuracy against independently
+source-verified errors. R1 is a post-hoc restricted range analysis and does not directly validate the public
+`affinity_out_of_range` implementation; R5b is a dataset operation outside this per-record registry.
+Evidence-scope wording reviewed on 2026-10-02; rule implementations and the original registry-generation date are unchanged.
 
-- **literature-grounded** (71 rules): Cited to measurement best practice but not empirically validated here; no repository publishes per-record ground-truth flags for the readout.
+The same unique rule records are available as [JSON](rule_cards.json) and [CSV](rule_cards.csv).
 
 - Severity mix: fail 7, warn 65
 
@@ -18,7 +22,7 @@
 
 | code | severity | tier | basis | recommended action |
 |---|---|---|---|---|
-| `affinity_out_of_range` | warn | validated | lit-jarmoskaite-2020-measure-affinity | verify units / measurement |
+| `affinity_out_of_range` | warn | literature-grounded | lit-jarmoskaite-2020-measure-affinity | verify units / measurement |
 | `batch_effect_uncontrolled` | warn | literature-grounded | lit-geng-2016-dacum | include plate/batch controls |
 | `buffer_unreported` | warn | literature-grounded | lit-jarmoskaite-2020-measure-affinity | report buffer/ionic strength |
 | `cross_assay_pooling_noise` | warn | literature-grounded | lit-landrum-2024-combining-ic50-noise | do not pool IC50/Ki across assays without maximal metadata-matched curation; flag pooled-source records |

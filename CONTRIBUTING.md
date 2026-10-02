@@ -1,24 +1,31 @@
 # Contributing
 
-Thanks for your interest in `biophys_interop`.
+Issues and pull requests are welcome. Include the input, expected behavior and actual QC reasons when reporting a
+problem; remove private identifiers and credentials before sharing a record.
 
 ## Development setup
+
 ```bash
-pip install -e ".[batch,test]"
-python src/biophys_interop/tests/test_pipeline.py   # or: pytest
+python -m pip install -e ".[batch,test]"
+python src/biophys_interop/tests/test_pipeline.py
+python tools/verify_quickstart.py --local-checkout
 ```
 
+The notebook runner requires a Git checkout and exercises every code cell, including batch output verification.
+
 ## Adding or changing a QC rule
-- Rules live in `src/biophys_interop/qc.py`. Each rule declares its `code`, applicable `modalities`, `severity`
-  (`fail`/`warn`), a literature `basis`, and the `action` it triggers.
-- New rules must cite a literature basis and state the tier of evidence (validated vs literature-grounded registry).
-- Regenerate the rule cards in `docs/` after any rule change.
-- Add or update a worked example under `src/biophys_interop/examples/` and cover the rule in the smoke tests.
 
-## Scope note
-Only two general affinity rules (value-range, exact-value duplicate) are empirically validated. Method-specific
-biophysical rules are a literature-grounded registry; keep that distinction explicit in code, docs, and PRs.
+Rules live in `src/biophys_interop/qc.py`. Each declares a unique `code`, applicable `modalities`, `severity`,
+literature or curation `basis`, and recommended `action`. Explain the evidence supporting the check and its limits.
+Update the rule cards in `docs/rule_cards.md`, `docs/rule_cards.json` and `docs/rule_cards.csv` together, and cover the
+behavior with an appropriate example or test. Keep registry counts consistent with `RULE_COUNT`.
 
-## Pull requests
-Keep changes focused, include a test, and do not alter validated numbers or claims without a corresponding update to
-the reproducibility artifacts.
+## Evidence scope
+
+The 72 public rules are a transparent registry. ChEMBL annotation-proxy benchmark operations R1/R5b do not establish
+rule-level accuracy against independently source-verified errors. R1 is a post-hoc restricted range analysis;
+R5b is a dataset operation outside the per-record registry. Do not label a public rule empirically validated on the
+strength of those comparisons. Default heuristic uncertainty is an estimate, not calibrated error.
+
+Keep changes focused and include relevant verification. Changes to scientific claims or reported numbers must cite
+corresponding source evidence and reproducibility artifacts. Preserve archived releases and published deposits.
