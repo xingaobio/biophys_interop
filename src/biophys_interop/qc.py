@@ -1,4 +1,4 @@
-"""qc(record) -> record + QC flags + calibrated uncertainty (INTEROP_SPEC §5).
+"""qc(record) -> record + QC flags + labelled uncertainty estimate (INTEROP_SPEC §5).
 
 The program's MOAT: biophysics judgment distilled into deterministic, method-aware rules. Each rule is a
 registry entry with a literature/best-practice `basis` and an `action`. Adding a new "Xin rule" = append one
@@ -480,16 +480,16 @@ def qc(record: dict, calibrator=None) -> dict:
     flag = "fail" if n_fail else ("warn" if n_warn else "pass")
     rec["qc"] = {"flag": flag, "score": round(max(0.0, 1.0 - (0.2 * n_warn + 0.5 * n_fail)), 3),
                  "reasons": reasons, "n_warn": n_warn, "n_fail": n_fail}
-    if calibrator is not None:                       # fitted model (preferred)
+    if calibrator is not None:                       # explicitly supplied fitted model
         cal_val, rel = calibrator.predict_uncertainty(rec)
         rec["uncertainty"] = {"value": cal_val, "type": "std", "source": "calibrated",
                               "method": "model", "applies_to": key,
                               "rel_error": round(rel, 4), "reported": reported}
-    else:                                            # hand-tuned fallback
+    else:                                            # hand-tuned estimate, not a fitted calibration
         base = reported if isinstance(reported, (int, float)) else (abs(val) * _CV.get(mod, 0.25) if val else None)
         inflate = 1.0 + 0.5 * n_warn + 1.0 * n_fail
         rec["uncertainty"] = {"value": (base * inflate) if base is not None else None, "type": "std",
-                              "source": "calibrated", "method": "heuristic", "applies_to": key,
+                              "source": "estimated", "method": "heuristic", "applies_to": key,
                               "inflation_factor": round(inflate, 2), "reported": reported}
     return rec
 

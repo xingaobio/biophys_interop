@@ -1,6 +1,6 @@
 {
   "title": "biophys_interop: an open standardization and model-free QC layer for biophysical bioactivity data",
-  "description": "biophys_interop is a dependency-light Python toolkit for standardizing heterogeneous biophysical bioactivity measurements and applying transparent, method-aware quality-control rules. This software release contains the canonical schema, 72-rule QC registry, command-line interface, examples, and a runnable quickstart notebook. The full reproducibility dataset is archived separately because its ChEMBL-derived records are licensed CC BY-SA 3.0.",
+  "description": "biophys_interop is a dependency-light Python toolkit for standardizing heterogeneous biophysical bioactivity measurements and applying transparent, method-aware quality-control rules. This software release contains the canonical schema, 72-rule QC registry, command-line interface, examples, and a runnable quickstart notebook. The original release dataset is archived separately at DOI 10.5281/zenodo.21446602. A revised public-limited cached-statistics companion is archived at DOI 10.5281/zenodo.23097835; it excludes hosted-model materials and is not end-to-end raw-pipeline reproduction. ChEMBL-derived records retain CC BY-SA 3.0 obligations.",
   "creators": [
     {
       "name": "Gao, Xin",

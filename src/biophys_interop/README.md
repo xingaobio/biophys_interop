@@ -1,6 +1,6 @@
 # biophys_interop (v0.1.0) — the Gap-4 core
 
-A small, dependency-light (numpy-only) reference toolkit implementing `INTEROP_SPEC_v0`: the calibrated,
+A small, dependency-light (numpy-only) reference toolkit implementing `INTEROP_SPEC_v0`: an uncertainty-aware,
 model-agnostic representation of heterogeneous biophysical experimental data. This is the program's
 **primary, non-colliding contribution** (see `knowledge/landscape/gaps.md` v3 and `foresight_2026Q3.md`).
 
@@ -8,7 +8,7 @@ model-agnostic representation of heterogeneous biophysical experimental data. Th
 | Function | Does | Spec |
 |---|---|---|
 | `standardize(raw, modality)` | loose dict -> canonical record; units -> SI | §3 |
-| `qc(record)` | adds QC flags + **calibrated uncertainty** from distilled biophysics rules | §5 |
+| `qc(record)` | adds QC flags + a labelled **heuristic uncertainty estimate**; a fitted calibrator is optional | §5 |
 | `featurize(record)` | -> fixed-dim numpy vector, model-agnostic | §6 |
 | `Adapter(H, D)(emb, feat)` | bolt-on conditioning contract (frozen backbone + thin adapter) | §7 |
 

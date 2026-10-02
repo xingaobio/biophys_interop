@@ -33,7 +33,7 @@ def cmd_run(path):
     for r in rec["qc"]["reasons"]:
         print(f"    - [{r['severity']}] {r['code']}: {r['message']}  (basis: {r['basis']})")
     u = rec["uncertainty"]
-    print(f"  uncertainty: {u['value']} (calibrated, x{u['inflation_factor']} of reported {u['reported']})")
+    print(f"  uncertainty: {u['value']} ({u['source']}, {u['method']}, x{u['inflation_factor']} of reported {u['reported']})")
     print(f"  feature   : dim={fx['meta']['dim']}, nonzero={int((fx['vector']!=0).sum())}")
     return 0
 

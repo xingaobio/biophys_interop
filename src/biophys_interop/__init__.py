@@ -1,8 +1,8 @@
-"""biophys_interop — calibrated, model-agnostic representation of biophysical experimental data.
+"""biophys_interop — uncertainty-aware, model-agnostic representation of biophysical experimental data.
 
 The four contracts (INTEROP_SPEC_v0):
     standardize(raw, modality) -> canonical record      (§3, units -> SI)
-    qc(record)                 -> + QC flags + calibrated uncertainty   (§5, the moat)
+    qc(record)                 -> + QC flags + labelled uncertainty estimate   (§5, the moat)
     featurize(record)          -> fixed-dim numpy vector (§6, model-agnostic)
     Adapter(H, D)(emb, feat)   -> conditioning           (§7, bolt-on contract)
 

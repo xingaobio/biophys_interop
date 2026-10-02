@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below and cite the associated preprint when available."
+message: "If you use this software, please cite it as below and cite the associated ChemRxiv preprint (DOI 10.26434/chemrxiv.15006416/v1)."
 title: "biophys_interop: an open standardization and model-free QC layer for biophysical bioactivity data"
 version: 0.1.0
 date-released: 2026-07-20

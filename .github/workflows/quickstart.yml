@@ -1,0 +1,36 @@
+name: Package and quickstart checks
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quickstart:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package and batch dependencies
+        run: python -m pip install ".[batch]"
+      - name: Check canonical records and QC
+        run: python src/biophys_interop/tests/test_pipeline.py
+      - name: Execute every quickstart code cell
+        run: python tools/verify_quickstart.py --local-checkout --output quickstart-check.json
+      - name: Preserve per-cell evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quickstart-python-${{ matrix.python-version }}
+          path: quickstart-check.json

@@ -25,7 +25,8 @@ def run_one(name):
     chk = dict(rec); chk.pop("_qc_inputs", None)
     ok, errs = validate(chk)
     assert ok, f"{name} invalid: {errs}"
-    assert rec["uncertainty"]["source"] == "calibrated"
+    assert rec["uncertainty"]["source"] == "estimated"
+    assert rec["uncertainty"]["method"] == "heuristic"
     fx = featurize(rec)
     assert fx["vector"].shape == (FEATURE_DIM,)
     assert fx["mask"].any()
